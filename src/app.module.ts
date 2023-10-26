@@ -6,8 +6,9 @@ import { AirQualityModule } from './air-quality/air-quality.module';
 import { Model } from 'mongoose';
 import { City } from './air-quality/models/city.entity';
 
-const MONGO_URI = 'mongodb://root:examplePassword@mongodb:27017/newsletter';
-
+const MONGO_URI =
+  process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/newsletter';
+console.log('MONGO_URI', MONGO_URI);
 @Module({
   imports: [MongooseModule.forRoot(MONGO_URI), AirQualityModule],
   controllers: [AppController],
